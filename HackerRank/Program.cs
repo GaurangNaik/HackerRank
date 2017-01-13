@@ -105,35 +105,53 @@ namespace HackerRank
             #endregion
 
             #region Pelindrom Number / String
+            //string s = Console.ReadLine();
+            //string input = s.Replace(" ", string.Empty);
+            //s = null;
+
+
+            //for (int i = 1; i <= input.Length; i++)
+            //{
+            //    Console.WriteLine("first ={0} Second = {1}", input.Substring(i-1, 1),input.Substring(input.Length - i, 1));
+            //    if (input.Substring(i - 1, 1).Equals(input.Substring(input.Length - i, 1)))
+            //    {
+            //        if (i == input.Length)
+            //        {
+            //            Console.WriteLine("Pelindrom");
+            //        }
+            //        else
+            //            continue;
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Non Pelindrom");
+            //        break;
+            //    }
+            //}
+            //Console.ReadLine();
+            #endregion
+
+            #region Lexicograhically greater string
+            int size = int.Parse(Console.ReadLine());
             string s = Console.ReadLine();
-            string input = s.Replace(" ", string.Empty);
+            string[] inputArray = new string[size];
+            inputArray = s.Split(' ');
             s = null;
 
 
-            for (int i = 1; i <= input.Length; i++)
+            foreach (string str in inputArray)
             {
-                Console.WriteLine("first ={0} Second = {1}", input.Substring(i-1, 1),input.Substring(input.Length - i, 1));
-                if (input.Substring(i - 1, 1).Equals(input.Substring(input.Length - i, 1)))
-                {
-                    if (i == input.Length)
-                    {
-                        Console.WriteLine("Pelindrom");
-                    }
-                    else
-                        continue;
-                }
-                else
-                {
-                    Console.WriteLine("Non Pelindrom");
-                    break;
-                }
+                
             }
-            Console.ReadLine();
+                
+           
 
-        }   
+            Console.ReadLine();
             #endregion
-        
-            #region Triplet Comparison Problem methods
+
+        }
+
+        #region Triplet Comparison Problem methods
         static void CalcPoints(int a, int b, ref int aliceP, ref int bobP)
         {
             if (a > b)
