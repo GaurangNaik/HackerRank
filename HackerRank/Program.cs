@@ -2,6 +2,7 @@
 using System.Numerics;
 using System.Data;
 using System.Collections.Generic;
+using System.Text;
 
 namespace HackerRank
 {
@@ -131,24 +132,91 @@ namespace HackerRank
             //Console.ReadLine();
             #endregion
 
-            #region Lexicograhically greater string
-            int size = int.Parse(Console.ReadLine());
-            string s = Console.ReadLine();
-            string[] inputArray = new string[size];
-            inputArray = s.Split(' ');
-            s = null;
+            #region Lexicograhically greater string - On hold
+            //int size = int.Parse(Console.ReadLine());
+            //string s = Console.ReadLine();
+            //string[] inputArray = new string[size];
+            //inputArray = s.Split(' ');
+            //s = null;
 
 
-            foreach (string str in inputArray)
-            {
-                
-            }
-                
-           
+            //foreach (string str in inputArray)
+            //{
+            //    byte[] bytes = Encoding.ASCII.GetBytes(str);
+            //    foreach (byte item in bytes)
+            //    {
+            //        Console.WriteLine(item);
 
-            Console.ReadLine();
+
+
+            //    }
+            //}
+
+
+
+            //Console.ReadLine();
             #endregion
 
+            #region Mini-Max Sum
+           // int size = int.Parse(Console.ReadLine());
+            string s = Console.ReadLine();
+            string[] inputArray = new string[5];
+            inputArray = s.Split(' ');
+            int[] nums = Array.ConvertAll(inputArray, int.Parse);
+            s = null; inputArray = null;
+            int[] result = getSmallestAndLargestElement(nums);
+            Console.WriteLine("Smallest: {0} , Largest: {1}", result[0], result[1]);
+            //Console.ReadLine();
+
+            Int64 maxSum = 0; Int64 minSum = 0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+               minSum = maxSum += nums[i];
+            }
+            maxSum = maxSum - result[0];
+            minSum = minSum - result [1];
+            Console.WriteLine("{1} {0}", maxSum, minSum);
+            Console.ReadLine();
+            #endregion
+        }
+
+        static int[] getSmallestAndLargestElement(int[] intArray)
+        {
+            bool isSwap = false;
+            int[] sortedArray = new int[2];
+            
+            LOOP:
+            for (int i = 0; i < intArray.Length; i++)
+            {
+                if (i< intArray.Length -1)
+                {
+                    if (intArray[i] > intArray[i + 1])
+                    {
+                        isSwap = true;
+                        //Swapping without temp variable
+                        intArray[i] = intArray[i] + intArray[i + 1];
+                        intArray[i + 1] = intArray[i] - intArray[i + 1];
+                        intArray[i] = intArray[i] - intArray[i + 1];
+                    }
+                    else
+                    {
+                        continue;
+                    } 
+                }
+            }
+            if (isSwap)
+            {
+                isSwap = false;
+                goto LOOP;
+            }
+            else
+            {
+                sortedArray[0] = intArray[0];
+                sortedArray[1] = intArray[intArray.Length - 1];
+            }
+
+            return sortedArray;
         }
 
         #region Triplet Comparison Problem methods
