@@ -3,6 +3,7 @@ using System.Numerics;
 using System.Data;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace HackerRank
 {
@@ -158,29 +159,68 @@ namespace HackerRank
             #endregion
 
             #region Mini-Max Sum
-           // int size = int.Parse(Console.ReadLine());
-            string s = Console.ReadLine();
-            string[] inputArray = new string[5];
-            inputArray = s.Split(' ');
-            int[] nums = Array.ConvertAll(inputArray, int.Parse);
-            s = null; inputArray = null;
-            int[] result = getSmallestAndLargestElement(nums);
-            Console.WriteLine("Smallest: {0} , Largest: {1}", result[0], result[1]);
+
+            //string s = Console.ReadLine();
+            //string[] inputArray = new string[5];
+            //inputArray = s.Split(' ');
+            //int[] nums = Array.ConvertAll(inputArray, int.Parse);
+            //s = null; inputArray = null;
+            //int[] result = getSmallestAndLargestElement(nums);
+            //Console.WriteLine("Smallest: {0} , Largest: {1}", result[0], result[1]);
+
+
+            //Int64 maxSum = 0; Int64 minSum = 0;
+
+            //for (int i = 0; i < nums.Length; i++)
+            //{
+            //   minSum = maxSum += nums[i];
+            //}
+            //maxSum = maxSum - result[0];
+            //minSum = minSum - result [1];
+            //Console.WriteLine("{1} {0}", maxSum, minSum);
             //Console.ReadLine();
+            #endregion
 
-            Int64 maxSum = 0; Int64 minSum = 0;
-
-            for (int i = 0; i < nums.Length; i++)
+            #region PDF Designer Rectangle
+            string[] h_temp = Console.ReadLine().Split(' ');
+            int[] h = Array.ConvertAll(h_temp, Int32.Parse);
+            //Random rand = new Random(); // who will enter 26 values. :) use for testing.
+            ////string[] h_temp = new string[26];
+            //int[] h = new int[26];
+            //for (int i = 0; i < 26; i++)
+            //{
+            //    h[i] = rand.Next(1, 7);
+            //    Console.Write("{0} ", h[i]);
+            //}
+            //rand = null;
+            //string[] h_temp = Console.ReadLine().Split(' ');
+            //int[] h = Array.ConvertAll(h_temp, Int32.Parse);
+            Console.WriteLine();
+            string word = Console.ReadLine();
+            int[] selectedValues = new int[word.Trim().Length];
+            byte[] bytes = Encoding.ASCII.GetBytes(word);
+            int i = 0;
+            foreach (byte b in bytes)
             {
-               minSum = maxSum += nums[i];
+                
+                //ASCII code a=97 and z=122
+                // if we minus 97 from each b then this should give us the location of equivalent number in array h.
+                 Console.WriteLine("{0} = {1}",b,h[b - 97]);
+                //int highestNum = bytes.Max(); // getting the highest number to calculate area.
+                selectedValues[i] = h[b - 97];
+                i++;
             }
-            maxSum = maxSum - result[0];
-            minSum = minSum - result [1];
-            Console.WriteLine("{1} {0}", maxSum, minSum);
+            int highestNum = selectedValues.Max();
+            Console.WriteLine("HighestNum = {0}", highestNum);
+            //int x = h[highestNum - 97]; //locating the equivalent number in our array h and squaring it.
+            int area = (highestNum * word.Length); // 1 * (word length * highest num) is given
+            Console.WriteLine(area);
             Console.ReadLine();
+
+
             #endregion
         }
-
+        #region Bubble Sort for Mini-Max Sum
         static int[] getSmallestAndLargestElement(int[] intArray)
         {
             bool isSwap = false;
@@ -218,6 +258,7 @@ namespace HackerRank
 
             return sortedArray;
         }
+        #endregion
 
         #region Triplet Comparison Problem methods
         static void CalcPoints(int a, int b, ref int aliceP, ref int bobP)
