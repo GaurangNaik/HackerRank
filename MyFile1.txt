@@ -4,6 +4,8 @@ Space test.
 Another test.
 Space test 2
 Space test 3
+combined test.
+123 - ok
 
 
 
