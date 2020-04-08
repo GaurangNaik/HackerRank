@@ -1,6 +1,2 @@
 Added new file
-<<<<<<< HEAD
-Added another entry.
-=======
-added from another repo
->>>>>>> e6982b76c6e197c08c56985e81c608863a3df68b
+new
